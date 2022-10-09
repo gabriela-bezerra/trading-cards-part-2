@@ -60,20 +60,29 @@ function TradingCard(props) {
 }
 
 function TradingCardContainer() {
+
+  const floatCard = {
+    name: 'Float',
+    skill: 'baking pretzels',
+    imgUrl: '/static/img/float.jpg'
+  };
+
+  const [cards, setCards] = React.useState([floatCard]);
+
+
   const tradingCards = [];
 
   for (const currentCard of tradingCardData) {
     tradingCards.push(
       <TradingCard
-        key={currentCard.cardId}
+        key={currentCard.name}
         name={currentCard.name}
         skill={currentCard.skill}
         imgUrl={currentCard.imgUrl}
-      />,
+      />
     );
   }
 
-  return <div className="grid">{tradingCards}</div>;
+  return ( <div className="grid">{tradingCards}</div>);
 }
-
 ReactDOM.render(<TradingCardContainer />, document.getElementById('container'));
